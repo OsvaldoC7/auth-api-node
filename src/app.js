@@ -4,8 +4,11 @@ import pkg from '../package.json'
 import authRoutes from './routes/auth.routes'
 import classroomRoutes from './routes/classroom.routes'
 import userRoutes from './routes/user.routes'
+import roleRoutes from './routes/role.routes'
+import { createRoles } from './libs/initialSetup'
 
 const app = express()
+createRoles()
 
 app.set('pkg', pkg)
 app.use(morgan('dev'))
@@ -23,5 +26,6 @@ app.get('/', (req, res) => {
 app.use('/auth', authRoutes)
 app.use('/classroom', classroomRoutes)
 app.use('/user', userRoutes)
+app.use('/role', roleRoutes)
 
 export default app
