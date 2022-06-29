@@ -6,7 +6,7 @@ import User from '../models/User'
 
 export const getUsers = async (req, res) => {
   try {
-    const users = await User.find()
+    const users = await User.find().populate('roles').populate('roles')
     const total = await User.find().countDocuments()
     res.status(200).json({
       result: users,
@@ -19,7 +19,8 @@ export const getUsers = async (req, res) => {
 
 export const getUser = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id)
+    const user = await User.findById(req.params.id).populate('roles')
+    if (!user) return res.status(400).json({ message: 'User not found' })
     res.status(200).json(user)
   } catch (error) {
     res.status(500).json(error)
