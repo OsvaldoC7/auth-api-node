@@ -6,12 +6,14 @@ import {
   updateClassroom,
   deleteClassroom
 } from '../controllers/classroom.controller'
+import { verifyToken } from '../middlewares/authJws'
+
 const router = Router()
 
-router.post('/', createClassroom)
+router.post('/', verifyToken, createClassroom)
 router.get('/', getClassrooms)
 router.get('/:id', getClassroom)
-router.put('/:id', updateClassroom)
-router.delete('/:id', deleteClassroom)
+router.put('/:id', verifyToken, updateClassroom)
+router.delete('/:id', verifyToken, deleteClassroom)
 
 export default router
