@@ -1,5 +1,6 @@
 import express from 'express'
 import morgan from 'morgan'
+import cors from 'cors'
 import pkg from '../package.json'
 import authRoutes from './routes/auth.routes'
 import classroomRoutes from './routes/classroom.routes'
@@ -11,6 +12,7 @@ const app = express()
 createRoles()
 
 app.set('pkg', pkg)
+app.use(cors())
 app.use(morgan('dev'))
 app.use(express.json())
 
