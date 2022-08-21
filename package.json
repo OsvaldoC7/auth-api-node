@@ -7,7 +7,8 @@
     "dev": "eslint . && nodemon src/index.js --exec babel-node",
     "build": "babel src --out-dir dist",
     "start": "node dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --fix"
   },
   "keywords": [],
   "author": "Osvaldo",
@@ -20,7 +21,7 @@
     "express": "^4.18.1",
     "helmet": "^5.1.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.4.0",
+    "mongoose": "^6.5.2",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
